@@ -6,6 +6,11 @@ TagManager:
   tags:
   - ground
   - coin
+  - Text
+  - Saw
+  - Enemy
+  - Fire
+  - Mace
   layers:
   - Default
   - TransparentFX
