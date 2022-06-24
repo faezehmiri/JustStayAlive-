@@ -8,7 +8,7 @@ public class PlayerMover : MonoBehaviour
     public float speed = 5;
     private Rigidbody2D rb;
 
-    public float jump = 8;
+    public float jump = 7;
 
     private bool isgrounded = false;
 
@@ -60,9 +60,21 @@ public class PlayerMover : MonoBehaviour
 
         camera.transform.position = new Vector3(transform.position.x , 0 , -10);
     }
+    
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "ground") {
             isgrounded = true;
+        }
+        if (collision.gameObject.tag == "Enemy") {
+            anim.SetBool("IsAttack", true);
+            Destroy(collision.gameObject);
+        }
+        else {
+            anim.SetBool("IsAttack", false);
+        }
+        if (collision.gameObject.tag == "Mace" || collision.gameObject.tag == "Saw" || collision.gameObject.tag == "Fire") {
+            anim.SetBool("IsDie", true);
+            SceneManager.LoadScene("LoseScence");
         }
     }
 

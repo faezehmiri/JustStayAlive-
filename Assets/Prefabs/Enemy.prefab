@@ -166,4 +166,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   velocity: 3
-  links: 4
+  links: 1

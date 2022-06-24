@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ShopScence.unity
     guid: 4867611036fcfb94cb73d0ad386fe111
   - enabled: 1
+    path: Assets/Scenes/HelpScence.unity
+    guid: 87a2ff1cd94d29f47a794bdd504f2135
+  - enabled: 1
     path: Assets/Scenes/WinScence.unity
     guid: d65843f9ee916c448aabcf8210d083a4
   - enabled: 1
