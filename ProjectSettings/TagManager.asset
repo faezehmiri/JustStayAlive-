@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Fire
   - Mace
+  - Aviz
   layers:
   - Default
   - TransparentFX

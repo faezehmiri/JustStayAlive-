@@ -9,4 +9,8 @@ public class LoadPlay : MonoBehaviour
         SceneManager.LoadScene("PlayScence");
     }
     
+     
+     
 }
+
+

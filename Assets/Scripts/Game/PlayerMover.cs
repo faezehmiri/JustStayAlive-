@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerMover : MonoBehaviour
@@ -9,26 +8,29 @@ public class PlayerMover : MonoBehaviour
     public float speed = 5;
     private Rigidbody2D rb;
 
-    public float jump = 5;
+    public float jump = 8;
 
     private bool isgrounded = false;
 
     private Animator anim;
     private Vector3 rotation;
 
-	public GameObject camera;
+    private CoinManagment m;
+
+    public GameObject camera;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         rotation = transform.eulerAngles;
+        m = GameObject.FindGameObjectWithTag("Text").GetComponent<CoinManagment>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float direction = Input.GetAxis("Horizontal");
+       float direction = Input.GetAxis("Horizontal");
 
         if (direction != 0) {
             anim.SetBool("IsRunning" , true);
@@ -61,6 +63,13 @@ public class PlayerMover : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "ground") {
             isgrounded = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "coin") {
+            m.Addmoney();
+            Destroy(other.gameObject);
         }
     }
 }
