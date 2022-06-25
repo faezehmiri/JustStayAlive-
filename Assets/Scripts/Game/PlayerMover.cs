@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMover : MonoBehaviour
 {
     public float speed = 5;
+
     private Rigidbody2D rb;
 
     public float jump = 7;
@@ -13,6 +14,7 @@ public class PlayerMover : MonoBehaviour
     private bool isgrounded = false;
 
     private Animator anim;
+
     private Vector3 rotation;
 
     private CoinManagment m;
@@ -27,10 +29,9 @@ public class PlayerMover : MonoBehaviour
         m = GameObject.FindGameObjectWithTag("Text").GetComponent<CoinManagment>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-       float direction = Input.GetAxis("Horizontal");
+        float direction = Input.GetAxis("Horizontal");
 
         if (direction != 0) {
             anim.SetBool("IsRunning" , true);
@@ -72,9 +73,18 @@ public class PlayerMover : MonoBehaviour
         else {
             anim.SetBool("IsAttack", false);
         }
-        if (collision.gameObject.tag == "Mace" || collision.gameObject.tag == "Saw" || collision.gameObject.tag == "Fire") {
+        if (collision.gameObject.tag == "Mace" || collision.gameObject.tag == "Saw" || collision.gameObject.tag == "Fire" || collision.gameObject.tag == "Aviz") {
             anim.SetBool("IsDie", true);
             SceneManager.LoadScene("LoseScence");
+        }
+
+        if (collision.gameObject.tag == "Morecoin") {
+            m.Moremoney();
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "finish") {
+            SceneManager.LoadScene("WinScence");
         }
     }
 
