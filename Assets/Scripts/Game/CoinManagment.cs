@@ -11,7 +11,9 @@ public class CoinManagment : MonoBehaviour
 
     void Start()
     {
-            gold = PlayerPrefs.GetInt("Money" , 0);
+        /*gold=0;
+        PlayerPrefs.SetInt("Money" , gold);*/
+        gold = PlayerPrefs.GetInt("Money" , 0);
     }
 
     void Update()
